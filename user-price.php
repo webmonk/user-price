@@ -5,7 +5,7 @@ Plugin URI: http://codemypain.com
 Description: Assign specific price per product to users.
 Version: 1.0
 Author: Isaac Oyelowo
-Author URI: http://isaacoyelowo.com
+Author URI: https://isaacoyelowo.dev
 Tested up to: Woocommerce 2x
 */
 
@@ -15,56 +15,53 @@ Tested up to: Woocommerce 2x
 ### Solving real life issues one code at a time.
 */
 
-class ISAAC_price
-{
-	public function __construct()
-	{
-		if(!is_admin())
-		{
-			add_action('woocommerce_get_price_html', array($this,'user_price'));
-		}
+class ISAAC_price {
+
+	public function __construct() {
+
+		add_action('woocommerce_get_price_html', array($this,'user_price'));
 		add_action('init', array($this,'localize') );
 		add_action('woocommerce_add_to_cart', array($this,  'add_to_cart_hook'));
-        add_action('woocommerce_before_calculate_totals', array($this,  'add_custom_price' ));
+		add_action('woocommerce_before_calculate_totals', array($this,  'add_custom_price' ));
 		add_action('show_user_profile', array($this,'custom_user_profile_fields'));
-        add_action('edit_user_profile', array($this,'custom_user_profile_fields'));
-        add_action('admin_enqueue_scripts', array($this, 'sc_admin_js' ) );
-        add_action('personal_options_update', array($this,'update_extra_profile_fields') );
-        add_action('edit_user_profile_update', array($this,'update_extra_profile_fields') );
+		add_action('edit_user_profile', array($this,'custom_user_profile_fields'));
+		add_action('admin_enqueue_scripts', array($this, 'sc_admin_js' ) );
+		add_action('personal_options_update', array($this,'update_extra_profile_fields') );
+		add_action('edit_user_profile_update', array($this,'update_extra_profile_fields') );
 	}
 
-	public function localize()  
-	{
+	public function localize()  {
+
 		load_plugin_textdomain('user_price', false, dirname(plugin_basename(__FILE__)). "/languages" );
     }
 
-	public function sc_admin_js()
-	{
+	public function sc_admin_js() {
+
 		wp_register_script( 'usr_settings', plugins_url('/includes/js/admin/settings.js', __FILE__ ) );
 		wp_enqueue_script( 'usr_settings' );
 	}
 
-	public function user_price($price)
-    {
+	public function user_price($price) {
+
         global $product;
         $user = wp_get_current_user();
         $isaac_price  = get_user_meta( $user->ID, 'special_prices', true );
-        foreach($isaac_price as $user_price)
-        {
-        	if($product->id == $user_price['item_number'])
-        	{
+        foreach($isaac_price as $user_price) {
+
+        	if($product->id == $user_price['item_number']) {
+
         		$price = get_woocommerce_currency_symbol().$user_price['price'];
         	}
-        	if($user_price['price_suffix'] !='')
-        	{
+        	if($user_price['price_suffix'] !='') {
+
         		$price = $price. ' ' . $user_price['price_suffix'];
         	}
         }
         return $price;
     }
 
-    public function add_to_cart_hook($key)
-    {
+    public function add_to_cart_hook($key) {
+
         global $woocommerce;
         $user = wp_get_current_user();
         $isaac_price  = get_user_meta( $user->ID, 'special_prices', true );
@@ -92,6 +89,7 @@ class ISAAC_price
     }
 	
 	public function add_custom_price( $cart_object ) {
+
         global $woocommerce;
         foreach ( $cart_object->cart_contents as $key => $value ) 
         {
@@ -103,8 +101,8 @@ class ISAAC_price
 		}
     }
 
-    public function custom_user_profile_fields($user) 
-    {
+    public function custom_user_profile_fields($user) {
+
     	if(!current_user_can( 'promote_users' ))
     		return false;
     	$user_rates = get_user_meta($user->ID, 'special_prices',true) ;
@@ -151,8 +149,8 @@ class ISAAC_price
     <?php
     }
 
-    public function update_extra_profile_fields($user_id) 
-    {
+    public function update_extra_profile_fields($user_id) {
+
         $user_rate = array();
 	    $item_number = (isset($_POST['item_number'])) ? $_POST['item_number'] : array();
 	    $price = (isset($_POST['price'])) ? $_POST['price'] : array();
