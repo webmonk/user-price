@@ -3,7 +3,7 @@
 Plugin Name: Woocommerce User Price
 Plugin URI: http://codemypain.com
 Description: Assign specific price per product to users.
-Version: 1.1
+Version: 1.0.2
 Author: Isaac Oyelowo
 Author URI: https://isaacoyelowo.dev
 Tested up to: Woocommerce 8x
