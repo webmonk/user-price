@@ -1,37 +1,28 @@
-## Welcome to GitHub Pages
+# User Price
 
-You can use the [editor on GitHub](https://github.com/webmonk/user-price/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Description
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The User Price is a WordPress plugin that allows assigning specific price per product to users on WooCommerce.
 
-### Markdown
+## Features
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Add specific product prices for each user.
 
-```markdown
-Syntax highlighted code block
+## Installation
 
-# Header 1
-## Header 2
-### Header 3
+1. Download the plugin ZIP file.
+2. Upload and activate the plugin through the WordPress admin interface.
 
-- Bulleted
-- List
+## Usage
 
-1. Numbered
-2. List
+Once activated, the priices can be set on the user profile page.
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+## Contribution
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Contributions are welcome. Please fork the repository and submit a pull request.
 
-### Jekyll Themes
+---
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/webmonk/user-price/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+[Isaac Oyelowo]
+[https://isaacoyelowo.dev]
